@@ -1,0 +1,31 @@
+generated: '2026-08-12'
+method: probed
+source: https://portal.ecorobotix.cloud/api/schema/
+limit_count: 0
+note: >-
+  No rate limits are documented, because Ecorobotix publishes no API
+  documentation at all. Anonymous responses from the portal API carry no
+  RateLimit-*, X-RateLimit-* or Retry-After headers, so no runtime signal could
+  be observed either. Whether the API throttles authenticated clients cannot be
+  determined without an account; this is an honest zero, not an assertion that
+  the API is unlimited.
+headers_observed: []
+observed_response_headers:
+- surface: https://portal.ecorobotix.cloud/api/schema/
+  http_status: 401
+  headers:
+  - date
+  - content-type
+  - content-length
+  - server
+  - vary
+  - content-language
+  - x-content-type-options
+  - referrer-policy
+  - cross-origin-opener-policy
+  rate_limit_headers: none
+- surface: https://api.ecorobotix.cloud/
+  http_status: 503
+  rate_limit_headers: none
+  note: AWS API Gateway / CloudFront edge; returns 503 on every path probed.
+limits: []

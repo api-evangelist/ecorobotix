@@ -1,0 +1,26 @@
+generated: '2026-08-12'
+method: searched
+source: registry search across npm, PyPI, RubyGems, crates.io, NuGet, Maven Central, pkg.go.dev, Packagist and GitHub
+package_count: 0
+note: >-
+  No first-party Ecorobotix client library exists on any public package registry.
+  npm text search for "ecorobotix" returns zero packages; pypi.org/pypi/ecorobotix/json
+  returns 404. The GitHub account github.com/EcoRobotix exists but is a personal
+  account with 0 public repositories, and there is no api-evangelist-visible
+  Ecorobotix GitHub organization (api.github.com/orgs/ecorobotix returns 404). A
+  GitHub code search for "ecorobotix" returns only third-party repositories
+  authored by individuals, none first-party. This is consistent with the rest of
+  the profile: Ecorobotix runs no public developer program, so there is nothing
+  for an SDK to wrap. NO SDKs pointer is emitted in apis.yml.
+registries_checked:
+- registry: npm
+  query: https://registry.npmjs.org/-/v1/search?text=ecorobotix
+  result: 0 packages
+- registry: pypi
+  query: https://pypi.org/pypi/ecorobotix/json
+  status: 404
+- registry: github
+  query: https://api.github.com/orgs/ecorobotix/repos
+  status: 404
+  note: no organization; github.com/EcoRobotix is a user account with 0 public repos
+packages: []

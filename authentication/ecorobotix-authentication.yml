@@ -1,0 +1,55 @@
+generated: '2026-08-12'
+method: probed
+source: https://portal.ecorobotix.cloud/api/schema/
+note: >-
+  Ecorobotix publishes no OpenAPI document that can be read anonymously, so this
+  profile is NOT derived from a spec. It is recorded from the observed behaviour
+  of the live portal API. derive-authentication.py found zero spec files in this
+  repo, which is correct: the schema exists but is auth-gated.
+summary:
+  types:
+  - session
+  - unknown
+  api_key_in: []
+  oauth2_flows: []
+  public_developer_program: false
+  self_service_signup: false
+observed:
+- surface: https://portal.ecorobotix.cloud/api/schema/
+  http_status: 401
+  content_type: application/json
+  www_authenticate: null
+  body: '{"detail": "Authentication credentials were not provided."}'
+  server: gunicorn
+  note: >-
+    Verbatim Django REST Framework NotAuthenticated response. Confirms the API is
+    a DRF application with a drf-spectacular schema endpoint and that no
+    anonymous access is permitted. DRF returns this message for both session and
+    token authentication classes, so the accepted credential type cannot be
+    determined without an account.
+- surface: https://portal.ecorobotix.cloud/api/schema/swagger-ui/
+  http_status: 401
+  content_type: application/json
+  note: Swagger UI is deployed but gated behind the same authentication class.
+- surface: https://portal.ecorobotix.cloud/api/
+  http_status: 302
+  redirects_to: https://portal.ecorobotix.cloud/auth/login/
+  note: >-
+    Browser-facing API paths redirect to the portal login form rather than
+    returning 401, indicating SessionAuthentication is in the DEFAULT
+    AUTHENTICATION_CLASSES list.
+- surface: https://api.ecorobotix.cloud/
+  http_status: 503
+  content_type: application/json
+  body: '{"message":"Service Unavailable"}'
+  note: >-
+    Separate AWS API Gateway host. Returns the same 503 for every path probed,
+    so no authentication scheme could be observed.
+schemes: []
+gaps:
+- No public authentication documentation page.
+- No documented API key issuance, OAuth client registration or token endpoint.
+- No /.well-known/oauth-authorization-server or /.well-known/openid-configuration
+  on any host.
+- Credential type (session cookie vs DRF token vs JWT) is not publicly stated and
+  cannot be determined anonymously.

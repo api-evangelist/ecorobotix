@@ -1,0 +1,59 @@
+generated: '2026-08-12'
+method: probed
+source: live GET of /.well-known/* on every Ecorobotix host in apis.yml
+note: >-
+  Every /.well-known/ path probed on every Ecorobotix host either returned 404 or
+  returned an HTTP 200 whose body is the portal login HTML, not a document. The
+  portal at portal.ecorobotix.cloud is a Django application whose
+  authentication middleware answers 200 with the login page for ANY unmatched
+  path, so its 200s on /.well-known/security.txt, /.well-known/agent-card.json,
+  /openapi.json and /llms.txt are catch-all false positives and are recorded here
+  as misses. NO WellKnown or SecurityTxt pointer is emitted in apis.yml: the
+  provider serves no well-known document.
+hosts:
+- host: https://ecorobotix.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+- host: https://portal.ecorobotix.cloud
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    content_type: text/html
+    verdict: miss
+    note: HTML login page returned by the Django catch-all, not an RFC 9116 document
+  - path: /.well-known/agent-card.json
+    status: 200
+    content_type: text/html
+    verdict: miss
+    note: HTML login page returned by the Django catch-all, not an AgentCard
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    content_type: text/html
+    verdict: miss
+    note: HTML login page returned by the Django catch-all
+- host: https://api.ecorobotix.cloud
+  note: >-
+    Real AWS API Gateway host fronted by CloudFront (apigw-requestid + x-amz-cf-id
+    headers present) but every path returns a uniform JSON
+    {"message":"Service Unavailable"} with HTTP 503, so no well-known document is
+    reachable.
+  documents:
+  - path: /.well-known/oauth-authorization-server
+    status: 503
+  - path: /.well-known/openid-configuration
+    status: 503
+  - path: /.well-known/agent-card.json
+    status: 503

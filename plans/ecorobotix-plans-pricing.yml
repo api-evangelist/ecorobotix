@@ -1,0 +1,32 @@
+generated: '2026-08-12'
+method: searched
+source: https://ecorobotix.com/en-us/crop-care/ara-field-sprayer/
+plan_count: 0
+note: >-
+  Ecorobotix publishes no pricing page and no API plans. /pricing/ and /plans/
+  return 404 on ecorobotix.com; the product pages route every commercial enquiry
+  to a "Contact us" / "Request a demo" lead form, and equipment is sold through
+  regional dealers. The commercial model is a capital purchase of the ARA sprayer
+  plus a recurring annual software/algorithm licence, but the provider states no
+  figure publicly. There is no API pricing of any kind: the portal API is bundled
+  with machine ownership and is not sold, metered or listed separately.
+evidence:
+- url: https://ecorobotix.com/en-us/pricing/
+  status: 404
+- url: https://ecorobotix.com/en-us/plans/
+  status: 404
+- url: https://ecorobotix.com/en-us/crop-care/ara-field-sprayer/
+  status: 200
+- url: https://ecorobotix.com/en-us/contact-us/
+  status: 200
+plans: []
+third_party_reported:
+  note: >-
+    NOT provider-published. Recorded only to show that figures circulate in the
+    agricultural trade press while Ecorobotix itself publishes none. Do not treat
+    these as an Ecorobotix price list and do not score them as published plans.
+  reports:
+  - figure: USD 268,000 unit + software, plus USD 15,000 annual licence (2026 Canadian pricing)
+    source: https://farmtario.com/machinery/ecorobotix-ara-techs-ultra-precision-crop-spraying-levels-the-field/
+  - figure: GBP 5,500 annual subscription for crop algorithms and on-board image processing
+    source: https://www.fwi.co.uk/machinery/technology/ecorobotix-spot-sprayer-slashes-chemical-costs-by-over-90
