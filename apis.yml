@@ -14,6 +14,17 @@ description: 'Ecorobotix SA is a Swiss agricultural technology company founded i
   and fleet data are delivered to customers through the Ecorobotix cloud portal, which
   is backed by an authenticated REST API; that API is not offered as a public developer
   program.'
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 image: https://ecorobotix.com/wp-content/uploads/2025/03/favicon-96x96-1.png
 url: https://raw.githubusercontent.com/api-evangelist/ecorobotix/refs/heads/main/apis.yml
 x-type: company
