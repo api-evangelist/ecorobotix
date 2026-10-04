@@ -50,8 +50,8 @@ tags:
 - Precision Agriculture
 - Robotics
 - Artificial Intelligence
-- Computer-Vision
-- Machine-Learning
+- Computer Vision
+- Machine Learning
 - Sustainability
 - Farm Equipment
 - Switzerland
@@ -69,6 +69,8 @@ tags_raw:
 - Farm Equipment
 - Switzerland
 - IoT
+- Computer-Vision
+- Machine-Learning
 apis:
 - aid: ecorobotix:ecorobotix-portal-api
   name: Ecorobotix Portal API
